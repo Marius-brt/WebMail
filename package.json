@@ -1,0 +1,14 @@
+{
+  "name": "webmail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "oneside start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "oneside": "^2.0.5"
+  }
+}
