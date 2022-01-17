@@ -1,0 +1,39 @@
+<div class="full centered col">
+    <h2 class="mb-6">Sign in to <%= name %></h2>
+    <div class="Box">
+        <div class="Box-header auth">
+            <label for="username" class="input-name">Username</label>
+            <div class="input-group mb-3">
+                <input class="form-control" id="username" type="text">
+                <span class="text">
+					@<%= host %>
+				</span>
+            </div>
+            <label for="password" class="input-name">Password</label>
+            <input class="form-control input-block" id="password" type="password">
+            <div class="auth-grp mt-3 mb-4">
+                <div class="radio-group">
+                    <input class="radio-input" checked id="stay-logged" type="radio" name="options">
+                    <label class="radio-label" for="stay-logged">Stay logged</label>
+                    <input class="radio-input" id="forget" type="radio" name="options">
+                    <label class="radio-label" for="forget">Forget me 😔</label>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" id="login-btn" disabled onclick="login()">Sign in</button>
+            <span id="error" class="error"></span>
+        </div>
+        <div class="Box-body">
+            <button class="btn btn-block">
+				<i class="fab fa-google mr-1"></i>
+				<span>Sign in with Google</span>
+			</button>
+        </div>
+    </div>
+    <div class="Box auth mt-3">
+        <div style="display: flex; flex-direction: row;">
+            <span class="mr-1">No account yet?</span>
+            <a href="/signup">Create an account</a>
+        </div>
+    </div>
+</div>
+<script src="/public/js/auth.js"></script>
