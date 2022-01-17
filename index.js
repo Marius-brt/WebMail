@@ -13,28 +13,6 @@ const app = oneside.init({
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/email", require("./routes/email"));
 
-app.get("/", (req, res) => {
-  oneside.render("home", res).send();
-});
-
-app.get("/login", (req, res) => {
-  oneside
-    .render("login", res)
-    .ejs({
-      name: process.env.APP_NAME,
-      host: process.env.MAIL_HOST,
-    })
-    .send();
-});
-
-app.get("/signup", (req, res) => {
-  oneside
-    .render("signup", res)
-    .ejs({
-      name: process.env.APP_NAME,
-      host: process.env.MAIL_HOST,
-    })
-    .send();
-});
+app.use("/", require("./routes/pages"));
 
 app.listen();
