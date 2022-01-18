@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const gen = require("generate-password");
 
-const aes = require("../src/aes");
-const conn = require("../src/conn");
-const resp = require("../src/resp");
-const user = require("../schemas/user");
-const cpanel = require("../src/cpanel");
+const aes = require("../../src/aes");
+const conn = require("../../src/conn");
+const resp = require("../../src/resp");
+const user = require("../../schemas/user");
+const cpanel = require("../../src/cpanel");
 
 router.post("/login", (req, res) => {
   const { error, value } = user.login(req.body);

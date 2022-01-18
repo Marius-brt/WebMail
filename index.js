@@ -10,8 +10,8 @@ const app = oneside.init({
   },
 });
 
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/email", require("./routes/email"));
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/email", require("./routes/api/email"));
 
 app.use("/", require("./routes/pages"));
 

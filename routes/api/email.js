@@ -5,11 +5,11 @@ const { Client } = require("yapople");
 const axios = require("axios");
 const nodemailer = require("nodemailer");
 
-const aes = require("../src/aes");
-const resp = require("../src/resp");
-const conn = require("../src/conn");
-const auth = require("../src/auth");
-const email = require("../schemas/email");
+const aes = require("../../src/aes");
+const resp = require("../../src/resp");
+const conn = require("../../src/conn");
+const auth = require("../../src/auth");
+const email = require("../../schemas/email");
 
 let spam_list = [];
 
@@ -55,14 +55,14 @@ router.get("/refresh_list", auth, async (req, res) => {
       });
       await client.deleteAll();
       await client.quit();
-      res.json({
-        message: "ok",
-      });
+      res.json(resp(true));
     } catch (ex) {
-      res.send("Cannot retreive emails currently");
+      res.status(500).json(resp(false, "Cannot retreive emails currently"));
     }
   } else {
-    res.send(process.env.MAIL_HOST + " not authorized currently");
+    res
+      .status(500)
+      .json(resp(false, process.env.MAIL_HOST + " not authorized currently"));
   }
 });
 
@@ -125,7 +125,7 @@ router.post("/", auth, async (req, res) => {
       sender_username: req.user.username,
     })
     .from("emails_sended");
-  res.send("sended !");
+  res.json(resp(true));
 });
 
 router.get("/sended", auth, (req, res) => {
@@ -135,7 +135,7 @@ router.get("/sended", auth, (req, res) => {
       [req.user.username]
     )
     .then((data) => {
-      res.json(data[0]);
+      res.json(resp(true, data[0]));
     });
 });
 
@@ -146,7 +146,7 @@ router.get("/received", auth, (req, res) => {
       to_email: `${req.user.username}@${req.user.host}`,
     })
     .then((data) => {
-      res.json(data);
+      res.json(resp(true, data));
     });
 });
 

@@ -24,7 +24,7 @@ function getSendedEmails() {
     },
   }).done((response) => {
     $("#emails").empty();
-    response.forEach((mail) => {
+    response.data.forEach((mail) => {
       $("#emails").append(`<div>
 			<p>To: ${mail.to_email}</p>
 			<p>Subject: ${mail.subject}</p>
@@ -53,7 +53,7 @@ function getReceivedEmails() {
       },
     }).done((response) => {
       $("#emails").empty();
-      response.forEach((mail) => {
+      response.data.forEach((mail) => {
         $("#emails").append(`<div>
 				  <p>To: ${mail.to_email}</p>
 				  <p>Subject: ${mail.subject}</p>
